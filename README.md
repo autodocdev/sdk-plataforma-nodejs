@@ -1,20 +1,15 @@
-Autodoc Plataforma Node.js SDK
-===============
+# SDK plataforma nodejs
 
 - [Installation](#install)
 - [Getting Started](#getting-started)
 
 ## Installation
-Node SDK Installation
+
+npm
 
 ```
 npm i @autodocdev/sdk-plataforma-nodejs
 ```
 
 ## Getting Started
-Para começar a usar o SDK ....
-
-
-
-
-
+...
