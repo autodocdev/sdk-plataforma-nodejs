@@ -1,0 +1,50 @@
+name: Code quality
+
+on:
+  pull_request:
+      types:
+          - opened
+          - synchronize
+      branches:
+          - main
+          - developer
+
+jobs:
+    jest:
+        name: jest
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        steps:
+            -
+                name: Check out repository code
+                uses: actions/checkout@v3
+            -
+                name: Use Node.js 19
+                uses: actions/setup-node@v3
+                with:
+                    node-version: '19.x'
+            -
+                name: Install Dependencies
+                run: npm install --loglevel verbose
+
+            -   name: Jest
+                run: npm test --coverage=false
+    eslint:
+        name: eslint
+        runs-on: ubuntu-latest
+        needs: jest
+        steps:
+            -
+                name: Check out repository code
+                uses: actions/checkout@v3
+            -
+                name: Use Node.js 19
+                uses: actions/setup-node@v3
+                with:
+                    node-version: '19.x'
+            -
+                name: Install Dependencies
+                run: npm install --loglevel verbose
+            -
+                name: ESLint
+                run: npx eslint .
