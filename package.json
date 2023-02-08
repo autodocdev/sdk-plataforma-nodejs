@@ -2,15 +2,15 @@
   "name": "@autodocdev/sdk-plataforma-nodejs",
   "version": "0.1.0",
   "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/Main.js",
   "scripts": {
-    "tsc": "tsc",
+    "watch": "tsc --watch",
+    "tsc": "tsc && node dist/Main.js --watch",
     "test": "jest",
     "lint": "eslint ."
   },
   "files": [
-    "lib/**/*"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -36,5 +36,8 @@
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "axios": "^1.3.1"
   }
 }

@@ -1,11 +1,45 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
+    // "target": "ES2020",
+    "lib": ["ES2020"],
+    // "module": "ES2020",
+    // "moduleResolution": "node",
+
+    "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
-    "esModuleInterop": true,
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test/**/*.js"
   ]
 }
+
+// {
+//   "compilerOptions": {
+//     "target": "ES2020",
+//     "lib": ["ES2020"],
+//     "module": "ES2020",
+//     "moduleResolution": "node",
+
+//     "outDir": "dist",
+//     "rootDir": "src",
+//     "sourceMap": true,
+//     "declaration": true,
+
+//     "typeRoots": [
+//       "node_modules/@types",
+//       "src/typings"
+//     ]
+//   },
+//   "include": [
+//     "src/**/*"
+//   ],
+//   "exclude": [
+//     "node_modules",
+//     "test/**/*.js"
+//   ]
+// }
