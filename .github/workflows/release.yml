@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  npm:
+    name: Npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      -
+        name: Check code
+        uses: actions/checkout@v3
+      -
+        name: Use Node.js 19
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.x'
+      -
+        name: Install Dependencies
+        run: npm install --loglevel verbose
+      -
+        name: Jest
+        run: npm test
+  release:
+    needs: npm
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: checkout code
+        uses: actions/checkout@v3
+      -
+        name: generate tag using conventional commit
+        uses: TriPSs/conventional-changelog-action@v3
+        id: semver
+        with:
+            github-token: ${{ secrets.github_token }}
+            preset: 'angular'
+            tag-prefix: 'v'
+            skip-commit: true
+            skip-version-file: true
+      -
+        name: create release
+        uses: ncipollo/release-action@v1
+        with:
+            draft: false
+            tag: ${{ steps.semver.outputs.tag }}
+            name: ${{ steps.semver.outputs.tag }}
+            body: ${{ steps.semver.outputs.changelog }}
+            token: ${{ github.token }}
+            replacesArtifacts: true

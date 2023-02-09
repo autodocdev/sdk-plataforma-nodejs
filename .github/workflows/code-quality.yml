@@ -1,13 +1,13 @@
 name: Code quality
 
 on:
-  pull_request:
-      types:
-          - opened
-          - synchronize
-      branches:
-          - main
-          - developer
+    pull_request:
+        types:
+            - opened
+            - synchronize
+        branches:
+            - main
+            - developer
 
 jobs:
     jest:
