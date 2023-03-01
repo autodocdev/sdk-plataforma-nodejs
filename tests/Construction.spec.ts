@@ -18,7 +18,7 @@ describe('Construction class', () => {
       .all();
 
     expect(result).toBeDefined();
-    expect(result[0]).toBeDefined();
+    expect('200').toEqual(result.code);
   });
 
   it('getById - should get item By Id', async () => {
@@ -27,8 +27,8 @@ describe('Construction class', () => {
       .withCustomer('abc321')
       .getById('uuid');
 
-      expect(result).toBeDefined();
-      expect(result.id).toBeDefined();
+    expect(result).toBeDefined();
+    expect('200').toEqual(result.code);
   });
 
   it('update - should update one item', async () => {
@@ -39,13 +39,13 @@ describe('Construction class', () => {
       .update(
         'constructuionId',
         {
-          name: 'asdad',
-          description: 'asdad',
+          name: 'name teste',
+          description: 'description teste',
         }
       );
 
     expect(result).toBeDefined();
-    expect(result.id).toBeDefined();
+    expect('204').toEqual(result.code);
   });
 
   it('delete - should delete one item', async () => {
@@ -53,9 +53,9 @@ describe('Construction class', () => {
       .withUrl('http://host.example/v1')
       .withCustomer('abc321')
       .withAuthorization('auth123')
-      .delete('constructuionId');
+      .delete('constructionId');
 
     expect(result).toBeDefined();
-    expect('204').toBe(result.status);
+    expect('204').toBe(result.code);
   });
 });

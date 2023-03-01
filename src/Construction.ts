@@ -35,7 +35,7 @@ export class Construction implements Client {
   }
 
   async getById(constructionId: string) {
-    const response = await this.http.post(`/constructions/${constructionId}`);
+    const response = await this.http.get(`/constructions/${constructionId}`);
     return response.data;
   }
 
