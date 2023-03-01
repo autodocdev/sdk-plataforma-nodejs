@@ -1,9 +1,9 @@
-import axios, { AxiosInstance } from "axios";
+import { AxiosInstance } from "axios";
 import { Config } from "./Config";
+import { Client } from "./Types/Client";
 import {
-  Auth, ChangePassword, Client, Confirm, FirstAccess, Logout,
-  RefreshToken, Reset, UpdateAccount
-} from "./Types";
+  Auth, ChangePassword, Confirm, FirstAccess, Logout, RefreshToken, Reset, UpdateAccount
+} from "./Types/Sso";
 
 export class Sso implements Client {
 
@@ -12,30 +12,24 @@ export class Sso implements Client {
   private config: Config;
 
   constructor() {
-    this.config = new Config(axios);
+    this.config = new Config();
     this.http = this.config.getHttpClient();
   }
 
   withAuthorization(value: string): this {
-    this.http = this.config
-      .withAuthorization(value)
-      .getHttpClient();
+    this.http = this.config.withAuthorization(value).getHttpClient();
 
     return this;
   }
 
   withCustomer(value: string): this {
-    this.http = this.config
-      .withCustomer(value)
-      .getHttpClient();
+    this.http = this.config.withCustomer(value).getHttpClient();
 
     return this;
   }
 
   withUrl(value: string): this {
-    this.http = this.config
-      .withUrl(value)
-      .getHttpClient();
+    this.http = this.config.withUrl(value).getHttpClient();
 
     return this;
   }
@@ -77,15 +71,11 @@ export class Sso implements Client {
 
   async account(email: string) {
     const response = await this.http.get(`/account/${email}`);
-
     return response.data;
   }
 
   async updateAccount(email: string, data: UpdateAccount) {
-    const response = await this.http.put(
-        `/account/${email}`,
-        data,
-    );
+    const response = await this.http.put(`/account/${email}`, data);
     return response.data;
   }
 
@@ -94,4 +84,3 @@ export class Sso implements Client {
     return response.data;
   }
 }
-
