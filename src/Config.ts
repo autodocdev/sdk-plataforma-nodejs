@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosStatic } from "axios";
+import axios, { AxiosInstance, AxiosStatic } from "axios";
 
 export class Config {
 
@@ -6,7 +6,7 @@ export class Config {
 
   private http: AxiosInstance;
 
-  constructor (axios: AxiosStatic) {
+  constructor () {
     this.axios = axios;
     this.createHttpClient(this.getBaseConfig());
   }
@@ -18,6 +18,7 @@ export class Config {
   public withAuthorization(value: string): this {
     const base = this.getBaseConfig();
     base['headers']["Authorization"] = value;
+
     this.createHttpClient(base);
 
     return this;

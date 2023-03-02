@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from "axios";
+import { AxiosInstance } from "axios";
 import { Config } from "./Config";
-import { Client } from "./Types";
+import { Client } from "./Types/Client";
 import { Update } from "./Types/Construction";
 
 export class Construction implements Client {
@@ -10,12 +10,12 @@ export class Construction implements Client {
   private config: Config;
 
   constructor() {
-    this.config = new Config(axios);
+    this.config = new Config();
     this.http = this.config.getHttpClient();
   }
 
   withAuthorization(value: string): this {
-    this.config .withAuthorization(value).getHttpClient();
+    this.config.withAuthorization(value).getHttpClient();
     return this;
   }
 
@@ -35,7 +35,7 @@ export class Construction implements Client {
   }
 
   async getById(constructionId: string) {
-    const response = await this.http.post(`/constructions/${constructionId}`);
+    const response = await this.http.get(`/constructions/${constructionId}`);
     return response.data;
   }
 
@@ -49,4 +49,3 @@ export class Construction implements Client {
     return response.data;
   }
 }
-

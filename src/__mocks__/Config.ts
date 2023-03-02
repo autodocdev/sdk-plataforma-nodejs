@@ -17,44 +17,33 @@ export class Config {
 
   async get() {
     return {
-      "data": [{
-        "id": "63dbc47c9ad425cbd2066687",
-        "created_at": "2022-11-16T18:29:00+00:00",
-        "deleted_at": null
+      "data": {
+        "code": "200"
       },
-      {
-        "id": "63dbc47c9ad425cbd2066688",
-        "created_at": "2022-11-16T18:29:00+00:00",
-        "deleted_at": null
-      }]
     };
   }
 
   async post() {
     return {
       "data": {
-        "id": "63dbc47c9ad425cbd2066687",
-        "created_at": "2022-11-16T18:29:00+00:00",
-        "deleted_at": null
-      }
+        "code": "200"
+      },
     };
   }
 
   async put() {
     return {
       "data": {
-        "id": "63dbc47c9ad425cbd2066687",
-        "created_at": "2022-11-16T18:29:00+00:00",
-        "deleted_at": null
-      }
+        "code": "204"
+      },
     };
   }
 
   async delete() {
     return {
       "data": {
-        "status": "204",
-      }
+        "code": "204"
+      },
     };
   }
 }
