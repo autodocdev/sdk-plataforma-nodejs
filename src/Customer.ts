@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
 import { Config } from "./Config";
 import { Client } from "./Types/Client";
-import { Create, Update, UpdateOcccupations } from "./Types/Customer";
+import { Create, Update, UpdateOcccupation } from "./Types/Customer";
 
 export class Customer implements Client {
 
@@ -64,8 +64,8 @@ export class Customer implements Client {
     return response.data;
   }
 
-  async updateOccupation(customerId: string, data: UpdateOcccupations) {
-    const response = await this.http.put(`/customers/${customerId}/occupations`, data);
+  async updateOccupation(customerId: string, occupationId: string, data: UpdateOcccupation) {
+    const response = await this.http.put(`/customers/${customerId}/occupations/${occupationId}`, data); 
     return response.data;
   }
 

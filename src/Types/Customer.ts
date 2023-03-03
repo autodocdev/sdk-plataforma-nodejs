@@ -14,9 +14,11 @@ export interface Create {
 export interface Update {
   name: string;
   company: Company;
+  occupation_id: string[];
+  service_providers: string[];
 }
 
-export interface UpdateOcccupations {
+export interface UpdateOcccupation {
   alias: string;
 }
 
