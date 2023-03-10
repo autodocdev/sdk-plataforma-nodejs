@@ -16,7 +16,7 @@ describe('Config class', () => {
 
     const result = new Config().withAuthorization(authorization).getHttpClient();
 
-    expect(authorization).toEqual(result.defaults.headers.Authorization);
+    expect(authorization).toEqual(result.defaults.headers.common.Authorization);
 
   });
 
@@ -25,7 +25,7 @@ describe('Config class', () => {
 
     const result = new Config().withCustomer(customer).getHttpClient();
 
-    expect(customer).toEqual(result.defaults.headers['X-Customer-id']);
+    expect(customer).toEqual(result.defaults.headers.common['X-Customer-id']);
 
   });
 
