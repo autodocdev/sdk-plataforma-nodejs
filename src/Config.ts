@@ -16,18 +16,13 @@ export class Config {
   }
 
   public withAuthorization(value: string): this {
-    const base = this.getBaseConfig();
-    base['headers']["Authorization"] = value;
-
-    this.createHttpClient(base);
+    this.http.defaults.headers.common['Authorization'] = value;
 
     return this;
   }
 
   public withCustomer(value: string): this {
-    const base = this.getBaseConfig();
-    base["headers"]["X-Customer-id"] = value;
-    this.createHttpClient(base);
+    this.http.defaults.headers.common['X-Customer-id'] = value;
 
     return this;
   }
@@ -35,6 +30,7 @@ export class Config {
   public withUrl(value: string): this {
     const base = this.getBaseConfig();
     base.baseURL = value;
+
     this.createHttpClient(base);
 
     return this;

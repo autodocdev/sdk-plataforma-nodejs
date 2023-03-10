@@ -56,8 +56,8 @@ export class User {
     return response.data;
   }
 
-  async getByEmail(userId: string) {
-    const response = await this.http.get(`/users/${userId}`);
+  async getByEmail(email: string) {
+    const response = await this.http.get(`/users/email/${email}`);
     return response.data;
   }
 
